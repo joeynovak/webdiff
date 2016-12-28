@@ -82,29 +82,50 @@
   <ItemGroup>
     <Compile Include="Data\CompareResults.cs" />
     <Compile Include="Data\DataSource.cs" />
+    <Compile Include="Data\Config.cs" />
+    <Compile Include="Data\MongoDocument.cs" />
     <Compile Include="Data\Url.cs" />
     <Compile Include="Data\Session.cs" />
     <Compile Include="Data\UrlResults.cs" />
-    <Compile Include="MainWnd.cs">
+    <Compile Include="Forms\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWnd.Designer.cs">
+    <Compile Include="Forms\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ICrawlProgressListener.cs" />
+    <Compile Include="Forms\MainWnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWnd.Designer.cs">
       <DependentUpon>MainWnd.cs</DependentUpon>
     </Compile>
-    <Compile Include="SessionFrm.cs">
+    <Compile Include="Forms\SelectConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SessionFrm.Designer.cs">
-      <DependentUpon>SessionFrm.cs</DependentUpon>
+    <Compile Include="Forms\SelectConfigForm.Designer.cs">
+      <DependentUpon>SelectConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SessionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SessionForm.Designer.cs">
+      <DependentUpon>SessionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDiff.cs" />
-    <EmbeddedResource Include="MainWnd.resx">
+    <EmbeddedResource Include="Forms\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainWnd.resx">
       <DependentUpon>MainWnd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SessionFrm.resx">
-      <DependentUpon>SessionFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SelectConfigForm.resx">
+      <DependentUpon>SelectConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SessionForm.resx">
+      <DependentUpon>SessionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

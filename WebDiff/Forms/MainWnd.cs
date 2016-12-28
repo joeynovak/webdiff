@@ -11,7 +11,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using WebDiff.Data;
 
-namespace WebDiff
+namespace WebDiff.Forms
 {
     public partial class MainWnd : Form
     {
@@ -34,11 +34,23 @@ namespace WebDiff
 
         private void newSessionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SessionFrm sessionFrm = new SessionFrm();
-            sessionFrm.Show(this);
+           Config config = SelectConfig();
+            SessionForm sessionForm = new SessionForm(config);
+            sessionForm.Show(this);
+         sessionForm.Crawl();
         }
 
-        private void refreshSessionListToolStripMenuItem_Click(object sender, EventArgs e)
+       private Config SelectConfig()
+       {
+          SelectConfigForm form = new SelectConfigForm();
+         DialogResult dr = form.ShowDialog(this);         
+          if (dr == DialogResult.OK)
+             return form.SelectedConfig;
+          else
+             return null;
+       }
+
+       private void refreshSessionListToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loadSessions();
         }
@@ -47,7 +59,7 @@ namespace WebDiff
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
-            List<Session> sessions = dataSource.GetSessions();
+            List<Session> sessions = dataSource.GetAll<Session>();
             listBox1.Items.AddRange(sessions.ToArray());
             listBox2.Items.AddRange(sessions.ToArray());
         }
@@ -66,15 +78,24 @@ namespace WebDiff
         {
             //Prompt First...
             CompareResults results = WebDiff.CompareSessions((Session) listBox1.SelectedItem, (Session) listBox2.SelectedItem);
-            IMongoClient client = new MongoClient();
-            IMongoDatabase database = client.GetDatabase("web-diff");
-            IMongoCollection<BsonDocument> collection = database.GetCollection<BsonDocument>("compare-results");
-
-            collection.InsertOne(results.ToBsonDocument());
+           DataSource.GetInstance().Save(results);
             MessageBox.Show("Saved To Mongo");
 
         }
 
-        
-    }    
+      private void MainWnd_Load(object sender, EventArgs e)
+      {
+         List<Config> configs = DataSource.GetInstance().GetAll<Config>();
+         foreach (var config in configs)
+         {
+            if(config.Title != null)
+               configList.Items.Add(config);
+         }
+      }
+
+      private void configList_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
+      }
+   }    
 }
