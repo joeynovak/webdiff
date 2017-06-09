@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stn.Lib.CsMissingMethods.String;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,13 +57,13 @@ namespace WebDiff.Forms
          titleTextBox.Text = "";
 
          if (Config.AllowedDomains != null)
-            allowedCrawlDomainsTextBox.Text = string.Join("\r", Config.AllowedDomains);
+            allowedCrawlDomainsTextBox.Text = string.Join("\r\n", Config.AllowedDomains);
 
          if(Config.CapturePagesLinkedInTheseDomains != null)
-            linkedPagesAllowedDomainsTextBox.Text = string.Join("\r", Config.CapturePagesLinkedInTheseDomains);
+            linkedPagesAllowedDomainsTextBox.Text = string.Join("\r\n", Config.CapturePagesLinkedInTheseDomains);
 
          if(Config.StartUrls != null)
-            startUrlsTextBox.Text = string.Join("\r", Config.StartUrls);         
+            startUrlsTextBox.Text = string.Join("\r\n", Config.StartUrls);         
 
          titleTextBox.Text = Config.Title;
       }
@@ -73,14 +74,17 @@ namespace WebDiff.Forms
          List<string> startUrls = new List<string>();
          List<string> captureLinkedPagesOnlyDomains = new List<string>();
          List<string> allowedDomains = new List<string>();
-         foreach (var startUrl in startUrlsTextBox.Text.Split('\r'))
-            startUrls.Add(startUrl.Trim());
+         foreach (var startUrl in startUrlsTextBox.Text.Split("\r\n"))         
+            if(startUrl.Trim() != "")
+               startUrls.Add(startUrl.Trim());                     
 
-         foreach (var captureLinkedPagesInDomain in linkedPagesAllowedDomainsTextBox.Text.Split('\r'))
-            captureLinkedPagesOnlyDomains.Add(captureLinkedPagesInDomain.Trim());
+         foreach (var captureLinkedPagesInDomain in linkedPagesAllowedDomainsTextBox.Text.Split("\r\n"))
+            if (captureLinkedPagesInDomain.Trim() != "")
+               captureLinkedPagesOnlyDomains.Add(captureLinkedPagesInDomain.Trim());
 
-         foreach (var allowedDomain in allowedCrawlDomainsTextBox.Text.Split('\r'))
-            allowedDomains.Add(allowedDomain.Trim());
+         foreach (var allowedDomain in allowedCrawlDomainsTextBox.Text.Split("\r\n"))
+            if (allowedDomain.Trim() != "")
+               allowedDomains.Add(allowedDomain.Trim());
 
          Config.AllowedDomains = allowedDomains.ToArray();
          Config.CapturePagesLinkedInTheseDomains = captureLinkedPagesOnlyDomains.ToArray();
@@ -91,6 +95,11 @@ namespace WebDiff.Forms
       private void ConfigForm_Shown(object sender, EventArgs e)
       {
          UpdateUi();
+      }
+
+      private void ConfigForm_Load(object sender, EventArgs e)
+      {
+
       }
    }
 }

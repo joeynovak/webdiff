@@ -18,7 +18,7 @@ using WebDiff.Forms;
 
 namespace WebDiff
 {
-   class WebDiff
+   class WebDiffMainClass
    {
       private IWebDriver _webDriver = null;
       public Config Config { get; set; }
@@ -42,7 +42,7 @@ namespace WebDiff
 
 
 
-      public WebDiff(Config config)
+      public WebDiffMainClass(Config config)
       {
          Config = config;
       }
@@ -67,7 +67,7 @@ namespace WebDiff
          //Take Screenshot of Page
          String basePath = SavePicturesToPath + aUrl.FileNameBase;
          int height = WebDriver.FindElement(By.TagName("body")).Size.Height;
-         WebDriver.Manage().Window.Size = new Size(WebDriver.Manage().Window.Size.Width, height + 100);
+         WebDriver.Manage().Window.Size = new Size(WebDriver.Manage().Window.Size.Width, height + 250);
          ((ITakesScreenshot)WebDriver).GetScreenshot().SaveAsFile(basePath + ".png", ImageFormat.Png);
          aUrl.PicturePath = basePath + ".png";
          aUrl.HtmlSourcePath = basePath + ".html";
@@ -163,6 +163,9 @@ namespace WebDiff
          List<UrlResults> ListOfUrlResults = new List<UrlResults>();
          foreach (var url in originalSession.Urls)
          {
+            if (url.Uri == null || url.Uri.Trim() == "")
+               continue;
+
             UrlResults urlResults = new UrlResults();
             urlResults.OriginalUrl = url;
             MagickImage image = new MagickImage(url.PicturePath);

@@ -1,29 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Driver;
-using OpenQA.Selenium;
 using WebDiff.Data;
-using WebDiff.Properties;
 
 namespace WebDiff.Forms
 {
-   public partial class SessionForm : Form, ICrawlProgressListener
+   public partial class CrawlProgressForm : Form, ICrawlProgressListener
    {
-      private WebDiff webDiff;
+      private WebDiffMainClass _webDiffMainClass;
       private Config _config;
       private string _originalText;
 
-      public SessionForm(Config config)
+      public CrawlProgressForm(Config config)
       {
          InitializeComponent();
          _config = config;
@@ -38,20 +27,21 @@ namespace WebDiff.Forms
          
          foreach (var uri in _config.AllowedDomains)
          {
-            domains.Add(UrlCleaner.UrlCleaner.GetUri(uri).Host);
+            if(uri.Trim() != "")
+               domains.Add(UrlCleaner.UrlCleaner.GetUri(uri.Trim()).Host);
          }
 
-         webDiff = new WebDiff(_config);
-         webDiff.RegisterProgressListener(this);
-         webDiff.SavePicturesToPath = Properties.Settings.Default.DefaultPicturePath + "\\" + DateTime.Now.ToFileTimeUtc() + "\\";
-         Directory.CreateDirectory(webDiff.SavePicturesToPath);
+         _webDiffMainClass = new WebDiffMainClass(_config);
+         _webDiffMainClass.RegisterProgressListener(this);
+         _webDiffMainClass.SavePicturesToPath = Properties.Settings.Default.DefaultPicturePath + "\\" + DateTime.Now.ToFileTimeUtc() + "\\";
+         Directory.CreateDirectory(_webDiffMainClass.SavePicturesToPath);
 
          
-            webDiff.Crawl();
+            _webDiffMainClass.Crawl();
 
 
          closeButton.Enabled = true;
-         webDiff.Close();
+         _webDiffMainClass.Close();
 
          SaveSessionToMongo();
          this.Text = _originalText;
@@ -76,7 +66,7 @@ namespace WebDiff.Forms
       {         
          Session session = new Session();
          session.Time = DateTime.Now;
-         session.Urls = webDiff.CrawledDomainUrlsAsUrlObjects.ToArray();
+         session.Urls = _webDiffMainClass.CrawledDomainUrlsAsUrlObjects.ToArray();
          //session.AllowedDomains = webDiff.AllowedDomains.ToArray();
          //session.Title = session.ToString();
          session.ConfigAtTimeOfSession = _config;

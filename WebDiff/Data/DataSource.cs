@@ -48,7 +48,24 @@ namespace WebDiff
          }
 
          return results;
-      }          
+      }
+
+      public List<T> GetAllForConfig<T>(Config config) where T : MongoDocument, new()
+      {
+         MongoDocument t = new T();
+         List<T> results = new List<T>();
+         IMongoCollection<BsonDocument> collection =
+             mongo.GetDatabase("web-diff").GetCollection<BsonDocument>(t.GetCollectionName());
+         var documents = collection.Find(
+             new BsonDocument() { { "Config",  config._id}}
+         ).ToList();
+
+         foreach (var document in documents)
+         {
+            results.Add(BsonSerializer.Deserialize<T>(document));
+         }
+         return results;
+      }     
 
       public void Dispose()
       {

@@ -1,6 +1,6 @@
 ﻿namespace WebDiff.Forms
 {
-    partial class SessionForm
+    partial class CrawlProgressForm
     {
         /// <summary>
         /// Required designer variable.
@@ -103,7 +103,7 @@
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(526, 657);
          this.Controls.Add(this.tableLayoutPanel1);
-         this.Name = "SessionForm";
+         this.Name = "CrawlSettingsForm";
          this.Text = "Crawling Progress";
          this.Load += new System.EventHandler(this.SessionFrm_Load);
          this.tableLayoutPanel1.ResumeLayout(false);
