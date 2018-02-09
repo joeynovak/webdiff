@@ -12,7 +12,6 @@ using ImageMagick;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
-using Selenium;
 using WebDiff.Data;
 using WebDiff.Forms;
 
@@ -52,7 +51,7 @@ namespace WebDiff
       {
          Url aUrl = new Url() { Uri = urlToCrawl };
          CrawledDomainUrlsAsUrlObjects.Add(aUrl);
-         if (CrawledAllowedDomainUrls.Contains(urlToCrawl))
+         if (CrawledAllowedDomainUrls.Contains(urlToCrawl) || CrawledAllowedDomainUrls.Contains(urlToCrawl.Split('#').First()))
          {
             return;
          }
@@ -68,7 +67,8 @@ namespace WebDiff
          String basePath = SavePicturesToPath + aUrl.FileNameBase;
          int height = WebDriver.FindElement(By.TagName("body")).Size.Height;
          WebDriver.Manage().Window.Size = new Size(WebDriver.Manage().Window.Size.Width, height + 250);
-         ((ITakesScreenshot)WebDriver).GetScreenshot().SaveAsFile(basePath + ".png", ImageFormat.Png);
+         ((ITakesScreenshot)WebDriver).GetScreenshot().SaveAsFile(basePath + ".png",
+            ScreenshotImageFormat.Png);
          aUrl.PicturePath = basePath + ".png";
          aUrl.HtmlSourcePath = basePath + ".html";
          File.WriteAllText(aUrl.HtmlSourcePath, WebDriver.PageSource);
@@ -81,7 +81,7 @@ namespace WebDiff
          {
             if (link.GetAttribute("href") != null)
             {
-               urlsFoundOnThisPage.Add(link.GetAttribute("href"));
+               urlsFoundOnThisPage.Add(link.GetAttribute("href").Split('#').First());
             }
          }
 
@@ -142,7 +142,6 @@ namespace WebDiff
       public IWebDriver getDriver()
       {
          ChromeOptions chromeOptions = new ChromeOptions();
-
          DesiredCapabilities caps = new DesiredCapabilities();
          ChromeDriver driver = new ChromeDriver(chromeOptions);
 

@@ -77,7 +77,7 @@
          this.startUrlsTextBox.Multiline = true;
          this.startUrlsTextBox.Name = "startUrlsTextBox";
          this.startUrlsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-         this.startUrlsTextBox.Size = new System.Drawing.Size(645, 473);
+         this.startUrlsTextBox.Size = new System.Drawing.Size(566, 110);
          this.startUrlsTextBox.TabIndex = 4;
          this.startUrlsTextBox.Text = "http://www.obdlink.com";
          // 
@@ -100,7 +100,7 @@
          this.Compare.Multiline = true;
          this.Compare.Name = "Compare";
          this.Compare.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-         this.Compare.Size = new System.Drawing.Size(645, 91);
+         this.Compare.Size = new System.Drawing.Size(566, 67);
          this.Compare.TabIndex = 7;
          this.Compare.Text = "http://www.obdlink.com";
          // 
@@ -134,7 +134,7 @@
          this.allowedCrawlDomainsTextBox.Multiline = true;
          this.allowedCrawlDomainsTextBox.Name = "allowedCrawlDomainsTextBox";
          this.allowedCrawlDomainsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-         this.allowedCrawlDomainsTextBox.Size = new System.Drawing.Size(645, 72);
+         this.allowedCrawlDomainsTextBox.Size = new System.Drawing.Size(566, 52);
          this.allowedCrawlDomainsTextBox.TabIndex = 9;
          this.allowedCrawlDomainsTextBox.Text = "http://www.obdlink.com";
          this.allowedCrawlDomainsTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
@@ -143,7 +143,7 @@
          // 
          this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
          this.saveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-         this.saveButton.Location = new System.Drawing.Point(507, 771);
+         this.saveButton.Location = new System.Drawing.Point(428, 373);
          this.saveButton.Name = "saveButton";
          this.saveButton.Size = new System.Drawing.Size(75, 23);
          this.saveButton.TabIndex = 11;
@@ -155,7 +155,7 @@
          // 
          this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
          this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.cancelButton.Location = new System.Drawing.Point(588, 771);
+         this.cancelButton.Location = new System.Drawing.Point(509, 373);
          this.cancelButton.Name = "cancelButton";
          this.cancelButton.Size = new System.Drawing.Size(75, 23);
          this.cancelButton.TabIndex = 12;
@@ -181,8 +181,8 @@
          // 
          this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
          this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-         this.splitContainer1.Size = new System.Drawing.Size(658, 727);
-         this.splitContainer1.SplitterDistance = 499;
+         this.splitContainer1.Size = new System.Drawing.Size(579, 329);
+         this.splitContainer1.SplitterDistance = 145;
          this.splitContainer1.TabIndex = 13;
          // 
          // splitContainer2
@@ -201,8 +201,8 @@
          // 
          this.splitContainer2.Panel2.Controls.Add(this.label4);
          this.splitContainer2.Panel2.Controls.Add(this.allowedCrawlDomainsTextBox);
-         this.splitContainer2.Size = new System.Drawing.Size(658, 224);
-         this.splitContainer2.SplitterDistance = 120;
+         this.splitContainer2.Size = new System.Drawing.Size(579, 180);
+         this.splitContainer2.SplitterDistance = 96;
          this.splitContainer2.TabIndex = 0;
          // 
          // ConfigForm
@@ -211,7 +211,7 @@
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.CancelButton = this.cancelButton;
-         this.ClientSize = new System.Drawing.Size(682, 801);
+         this.ClientSize = new System.Drawing.Size(603, 403);
          this.Controls.Add(this.splitContainer1);
          this.Controls.Add(this.cancelButton);
          this.Controls.Add(this.saveButton);

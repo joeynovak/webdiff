@@ -1,5 +1,4 @@
-﻿using Stn.Lib.CsMissingMethods.String;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,15 +73,15 @@ namespace WebDiff.Forms
          List<string> startUrls = new List<string>();
          List<string> captureLinkedPagesOnlyDomains = new List<string>();
          List<string> allowedDomains = new List<string>();
-         foreach (var startUrl in startUrlsTextBox.Text.Split("\r\n"))         
+         foreach (var startUrl in startUrlsTextBox.Text.Split(new [] {'\r', '\n'}))         
             if(startUrl.Trim() != "")
                startUrls.Add(startUrl.Trim());                     
 
-         foreach (var captureLinkedPagesInDomain in linkedPagesAllowedDomainsTextBox.Text.Split("\r\n"))
+         foreach (var captureLinkedPagesInDomain in linkedPagesAllowedDomainsTextBox.Text.Split(new[] { '\r', '\n' }))
             if (captureLinkedPagesInDomain.Trim() != "")
                captureLinkedPagesOnlyDomains.Add(captureLinkedPagesInDomain.Trim());
 
-         foreach (var allowedDomain in allowedCrawlDomainsTextBox.Text.Split("\r\n"))
+         foreach (var allowedDomain in allowedCrawlDomainsTextBox.Text.Split(new[] { '\r', '\n' }))
             if (allowedDomain.Trim() != "")
                allowedDomains.Add(allowedDomain.Trim());
 

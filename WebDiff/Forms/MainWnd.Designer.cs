@@ -43,14 +43,14 @@ namespace WebDiff.Forms
          this.configList = new System.Windows.Forms.ComboBox();
          this.splitContainer1 = new System.Windows.Forms.SplitContainer();
          this.sessionsSplitContainer = new System.Windows.Forms.SplitContainer();
+         this.sessionBrowser1 = new WebDiff.Controls.SessionBrowser();
+         this.urlRightClickContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+         this.openUrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.sessionBrowser2 = new WebDiff.Controls.SessionBrowser();
          this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
          this.sessionBrowser2pictureBox = new System.Windows.Forms.PictureBox();
          this.sessionBrowser1pictureBox = new System.Windows.Forms.PictureBox();
          this.panel2 = new System.Windows.Forms.Panel();
-         this.urlRightClickContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-         this.openUrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-         this.sessionBrowser1 = new WebDiff.Controls.SessionBrowser();
-         this.sessionBrowser2 = new WebDiff.Controls.SessionBrowser();
          this.tableLayoutPanel1.SuspendLayout();
          this.menuStrip1.SuspendLayout();
          this.panel1.SuspendLayout();
@@ -62,10 +62,10 @@ namespace WebDiff.Forms
          this.sessionsSplitContainer.Panel1.SuspendLayout();
          this.sessionsSplitContainer.Panel2.SuspendLayout();
          this.sessionsSplitContainer.SuspendLayout();
+         this.urlRightClickContextMenuStrip.SuspendLayout();
          this.tableLayoutPanel2.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.sessionBrowser2pictureBox)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.sessionBrowser1pictureBox)).BeginInit();
-         this.urlRightClickContextMenuStrip.SuspendLayout();
          this.SuspendLayout();
          // 
          // tableLayoutPanel1
@@ -83,7 +83,7 @@ namespace WebDiff.Forms
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(1677, 1050);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(703, 407);
          this.tableLayoutPanel1.TabIndex = 0;
          this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
          // 
@@ -94,7 +94,7 @@ namespace WebDiff.Forms
             this.helpToolStripMenuItem});
          this.menuStrip1.Location = new System.Drawing.Point(0, 0);
          this.menuStrip1.Name = "menuStrip1";
-         this.menuStrip1.Size = new System.Drawing.Size(1677, 24);
+         this.menuStrip1.Size = new System.Drawing.Size(703, 24);
          this.menuStrip1.TabIndex = 0;
          this.menuStrip1.Text = "menuStrip1";
          // 
@@ -134,7 +134,7 @@ namespace WebDiff.Forms
          this.panel1.Controls.Add(this.configList);
          this.panel1.Location = new System.Drawing.Point(3, 28);
          this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(1195, 24);
+         this.panel1.Size = new System.Drawing.Size(697, 24);
          this.panel1.TabIndex = 3;
          // 
          // button1
@@ -179,8 +179,8 @@ namespace WebDiff.Forms
          // splitContainer1.Panel2
          // 
          this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
-         this.splitContainer1.Size = new System.Drawing.Size(1671, 989);
-         this.splitContainer1.SplitterDistance = 494;
+         this.splitContainer1.Size = new System.Drawing.Size(697, 346);
+         this.splitContainer1.SplitterDistance = 172;
          this.splitContainer1.TabIndex = 5;
          // 
          // sessionsSplitContainer
@@ -196,9 +196,46 @@ namespace WebDiff.Forms
          // sessionsSplitContainer.Panel2
          // 
          this.sessionsSplitContainer.Panel2.Controls.Add(this.sessionBrowser2);
-         this.sessionsSplitContainer.Size = new System.Drawing.Size(1671, 494);
-         this.sessionsSplitContainer.SplitterDistance = 828;
+         this.sessionsSplitContainer.Size = new System.Drawing.Size(697, 172);
+         this.sessionsSplitContainer.SplitterDistance = 345;
          this.sessionsSplitContainer.TabIndex = 1;
+         // 
+         // sessionBrowser1
+         // 
+         this.sessionBrowser1.ContextMenuStrip = this.urlRightClickContextMenuStrip;
+         this.sessionBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.sessionBrowser1.Location = new System.Drawing.Point(0, 0);
+         this.sessionBrowser1.Name = "sessionBrowser1";
+         this.sessionBrowser1.PictureBox = null;
+         this.sessionBrowser1.Size = new System.Drawing.Size(345, 172);
+         this.sessionBrowser1.TabIndex = 0;
+         this.sessionBrowser1.TreeViewContextMenuStrip = null;
+         // 
+         // urlRightClickContextMenuStrip
+         // 
+         this.urlRightClickContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openUrlToolStripMenuItem});
+         this.urlRightClickContextMenuStrip.Name = "urlRightClickContextMenuStrip";
+         this.urlRightClickContextMenuStrip.Size = new System.Drawing.Size(180, 26);
+         this.urlRightClickContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.urlRightClickContextMenuStrip_Opening);
+         // 
+         // openUrlToolStripMenuItem
+         // 
+         this.openUrlToolStripMenuItem.Name = "openUrlToolStripMenuItem";
+         this.openUrlToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+         this.openUrlToolStripMenuItem.Text = "Open Url In Browser";
+         this.openUrlToolStripMenuItem.Click += new System.EventHandler(this.openUrlToolStripMenuItem_Click);
+         // 
+         // sessionBrowser2
+         // 
+         this.sessionBrowser2.ContextMenuStrip = this.urlRightClickContextMenuStrip;
+         this.sessionBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.sessionBrowser2.Location = new System.Drawing.Point(0, 0);
+         this.sessionBrowser2.Name = "sessionBrowser2";
+         this.sessionBrowser2.PictureBox = null;
+         this.sessionBrowser2.Size = new System.Drawing.Size(348, 172);
+         this.sessionBrowser2.TabIndex = 0;
+         this.sessionBrowser2.TreeViewContextMenuStrip = null;
          // 
          // tableLayoutPanel2
          // 
@@ -212,15 +249,15 @@ namespace WebDiff.Forms
          this.tableLayoutPanel2.Name = "tableLayoutPanel2";
          this.tableLayoutPanel2.RowCount = 1;
          this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-         this.tableLayoutPanel2.Size = new System.Drawing.Size(1671, 491);
+         this.tableLayoutPanel2.Size = new System.Drawing.Size(697, 170);
          this.tableLayoutPanel2.TabIndex = 4;
          // 
          // sessionBrowser2pictureBox
          // 
          this.sessionBrowser2pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.sessionBrowser2pictureBox.Location = new System.Drawing.Point(838, 3);
+         this.sessionBrowser2pictureBox.Location = new System.Drawing.Point(351, 3);
          this.sessionBrowser2pictureBox.Name = "sessionBrowser2pictureBox";
-         this.sessionBrowser2pictureBox.Size = new System.Drawing.Size(830, 485);
+         this.sessionBrowser2pictureBox.Size = new System.Drawing.Size(343, 164);
          this.sessionBrowser2pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
          this.sessionBrowser2pictureBox.TabIndex = 2;
          this.sessionBrowser2pictureBox.TabStop = false;
@@ -231,7 +268,7 @@ namespace WebDiff.Forms
          this.sessionBrowser1pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
          this.sessionBrowser1pictureBox.Location = new System.Drawing.Point(3, 3);
          this.sessionBrowser1pictureBox.Name = "sessionBrowser1pictureBox";
-         this.sessionBrowser1pictureBox.Size = new System.Drawing.Size(829, 485);
+         this.sessionBrowser1pictureBox.Size = new System.Drawing.Size(342, 164);
          this.sessionBrowser1pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
          this.sessionBrowser1pictureBox.TabIndex = 0;
          this.sessionBrowser1pictureBox.TabStop = false;
@@ -244,48 +281,11 @@ namespace WebDiff.Forms
          this.panel2.Size = new System.Drawing.Size(200, 100);
          this.panel2.TabIndex = 4;
          // 
-         // urlRightClickContextMenuStrip
-         // 
-         this.urlRightClickContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openUrlToolStripMenuItem});
-         this.urlRightClickContextMenuStrip.Name = "urlRightClickContextMenuStrip";
-         this.urlRightClickContextMenuStrip.Size = new System.Drawing.Size(180, 48);
-         this.urlRightClickContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.urlRightClickContextMenuStrip_Opening);
-         // 
-         // openUrlToolStripMenuItem
-         // 
-         this.openUrlToolStripMenuItem.Name = "openUrlToolStripMenuItem";
-         this.openUrlToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-         this.openUrlToolStripMenuItem.Text = "Open Url In Browser";
-         this.openUrlToolStripMenuItem.Click += new System.EventHandler(this.openUrlToolStripMenuItem_Click);
-         // 
-         // sessionBrowser1
-         // 
-         this.sessionBrowser1.ContextMenuStrip = this.urlRightClickContextMenuStrip;
-         this.sessionBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.sessionBrowser1.Location = new System.Drawing.Point(0, 0);
-         this.sessionBrowser1.Name = "sessionBrowser1";
-         this.sessionBrowser1.PictureBox = null;
-         this.sessionBrowser1.Size = new System.Drawing.Size(828, 494);
-         this.sessionBrowser1.TabIndex = 0;
-         this.sessionBrowser1.TreeViewContextMenuStrip = null;
-         // 
-         // sessionBrowser2
-         // 
-         this.sessionBrowser2.ContextMenuStrip = this.urlRightClickContextMenuStrip;
-         this.sessionBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.sessionBrowser2.Location = new System.Drawing.Point(0, 0);
-         this.sessionBrowser2.Name = "sessionBrowser2";
-         this.sessionBrowser2.PictureBox = null;
-         this.sessionBrowser2.Size = new System.Drawing.Size(839, 494);
-         this.sessionBrowser2.TabIndex = 0;
-         this.sessionBrowser2.TreeViewContextMenuStrip = null;
-         // 
          // MainWnd
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(1677, 1050);
+         this.ClientSize = new System.Drawing.Size(703, 407);
          this.Controls.Add(this.tableLayoutPanel1);
          this.MainMenuStrip = this.menuStrip1;
          this.Name = "MainWnd";
@@ -305,10 +305,10 @@ namespace WebDiff.Forms
          this.sessionsSplitContainer.Panel2.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.sessionsSplitContainer)).EndInit();
          this.sessionsSplitContainer.ResumeLayout(false);
+         this.urlRightClickContextMenuStrip.ResumeLayout(false);
          this.tableLayoutPanel2.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.sessionBrowser2pictureBox)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.sessionBrowser1pictureBox)).EndInit();
-         this.urlRightClickContextMenuStrip.ResumeLayout(false);
          this.ResumeLayout(false);
 
       }

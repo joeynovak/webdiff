@@ -43,7 +43,7 @@
          this.urlTextBox.Location = new System.Drawing.Point(3, 28);
          this.urlTextBox.Multiline = true;
          this.urlTextBox.Name = "urlTextBox";
-         this.urlTextBox.Size = new System.Drawing.Size(520, 581);
+         this.urlTextBox.Size = new System.Drawing.Size(410, 275);
          this.urlTextBox.TabIndex = 1;
          this.urlTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
          // 
@@ -53,16 +53,16 @@
          this.label1.Location = new System.Drawing.Point(3, 5);
          this.label1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(58, 13);
+         this.label1.Size = new System.Drawing.Size(70, 13);
          this.label1.TabIndex = 2;
-         this.label1.Text = "Found Urls";
+         this.label1.Text = "Found Pages";
          this.label1.Click += new System.EventHandler(this.label1_Click);
          // 
          // closeButton
          // 
          this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
          this.closeButton.Enabled = false;
-         this.closeButton.Location = new System.Drawing.Point(409, 7);
+         this.closeButton.Location = new System.Drawing.Point(299, 7);
          this.closeButton.Name = "closeButton";
          this.closeButton.Size = new System.Drawing.Size(102, 23);
          this.closeButton.TabIndex = 4;
@@ -84,7 +84,7 @@
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
          this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-         this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 657);
+         this.tableLayoutPanel1.Size = new System.Drawing.Size(416, 351);
          this.tableLayoutPanel1.TabIndex = 5;
          this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
          // 
@@ -92,18 +92,18 @@
          // 
          this.panel1.Controls.Add(this.closeButton);
          this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.panel1.Location = new System.Drawing.Point(3, 615);
+         this.panel1.Location = new System.Drawing.Point(3, 309);
          this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(520, 39);
+         this.panel1.Size = new System.Drawing.Size(410, 39);
          this.panel1.TabIndex = 3;
          // 
-         // SessionForm
+         // CrawlProgressForm
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(526, 657);
+         this.ClientSize = new System.Drawing.Size(416, 351);
          this.Controls.Add(this.tableLayoutPanel1);
-         this.Name = "CrawlSettingsForm";
+         this.Name = "CrawlProgressForm";
          this.Text = "Crawling Progress";
          this.Load += new System.EventHandler(this.SessionFrm_Load);
          this.tableLayoutPanel1.ResumeLayout(false);
